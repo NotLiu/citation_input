@@ -32,7 +32,6 @@ export default function Questions() {
       });
     // console.log(e);
     // console.log(e.target[0].value);
-    e.preventDefault();
   }
 
   const qTypes = [
