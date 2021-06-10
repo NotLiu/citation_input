@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const MongoClient = require("mongodb").MongoClient;
-const dotenv = require("dotenv").config();
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const app = express();
 
