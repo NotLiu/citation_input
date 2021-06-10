@@ -1,38 +1,185 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* nav bar */
+@media only screen and (min-width: 500px) {
+  #aboutme {
+    font-size: 2vw;
+  }
+  #nav-bar {
+    font-size: 18px;
+  }
+  #nav-bar-nofix {
+    font-size: 18px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@media only screen and (max-width: 500px) and (min-width: 430px) {
+  #aboutme {
+    font-size: x-large;
+  }
+  #nav-bar {
+    font-size: medium;
+  }
+  #nav-bar-nofix {
+    font-size: medium;
+  }
+  #image-banner {
+    top: initial !important;
+  }
+  #image-banner > img {
+    height: initial !important;
+  }
+}
+
+@media only screen and (max-width: 429px) and (min-width: 350px) {
+  #aboutme {
+    font-size: large;
+  }
+  #nav-bar {
+    font-size: small;
+  }
+  #nav-bar-nofix {
+    font-size: small;
+  }
+  #image-banner {
+    top: initial !important;
+  }
+  #image-banner > img {
+    height: initial !important;
+  }
+}
+@media only screen and (max-width: 349px) {
+  #aboutme {
+    font-size: large;
+  }
+  #nav-bar {
+    font-size: x-small;
+  }
+  #nav-bar-nofix {
+    font-size: x-small;
+  }
+  #image-banner {
+    top: initial !important;
+  }
+  #image-banner > img {
+    height: initial !important;
+  }
+}
+
+#nav-bar {
+  background-color: darkslategrey;
+  position: fixed;
+  padding: 10px 15px;
+  width: 100%;
+  z-index: 1000;
+  /* font-size: 1em; */
+}
+
+#nav-bar-nofix {
+  background-color: transparent;
+  padding: 10px 15px;
+  width: 100%;
+  z-index: 1000;
+  /* font-size :1.13em; */
+}
+
+#nav-bar:hover {
+  animation: darken-nav 0.5s forwards;
+}
+
+@keyframes darken-nav {
+  0% {
+    background-color: darkslategrey;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+#nav {
+  display: inline-flex;
+  list-style: none;
+  justify-content: flex-end;
+
+  margin: 0 0;
+
+  width: 93%;
+  padding-right: 2%;
+}
+
+#nav-name {
+  position: absolute;
+  float: left;
+}
+
+#nav-name > a {
   color: white;
+  text-decoration: none;
+
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+#nav > li {
+  padding-left: 3%;
+  /* margin-right: 5em; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#nav > li > a {
+  color: gainsboro;
+  text-decoration: none;
+
+  padding: 5% 12% 7%;
+  white-space: nowrap;
+}
+
+#nav > li > a:hover {
+  border-radius: 6px;
+  animation: fadein 0.5s forwards;
+}
+
+@keyframes fadein {
+  0% {
+    background-color: transparent;
+    color: gainsboro;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    color: white;
+    background-color: cornflowerblue;
   }
+}
+
+.questionForm {
+  padding: 4.5em 2em;
+}
+
+#formInputs {
+  display: flex;
+  flex-direction: row;
+}
+
+#dropdown {
+  width: 13em;
+}
+
+#formList > ul {
+  list-style: none;
+}
+
+#formList > ul > li {
+  padding: 0.5em 0;
+}
+
+#formListRight > ul {
+  list-style: none;
+}
+
+#formListRight > ul > li {
+  padding: 0.3em 0;
+}
+
+#formListRight > ul > li > input {
+  width: 15em;
+}
+
+#submitButton {
+  margin-left: 40px;
+  width: 26.5em;
 }
