@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv").config();
 
@@ -6,6 +7,9 @@ const app = express();
 
 // parse application/x-www-form-urlencoded
 app.use(express.json());
+
+// Serve static files from the React app FOR BUILD
+app.use(express.static(path.join(__dirname, "/build")));
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,9 +24,7 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 
-const baseUrl = "/api/questions";
-
-app.post(baseUrl, function (request, response) {
+app.post("/api/questions", function (request, response) {
   const entry = {
     type: request.body.type,
     questionText: request.body.question,
@@ -46,6 +48,11 @@ app.post(baseUrl, function (request, response) {
       })
     );
   });
+});
+
+//for build
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.listen(PORT, () => {
