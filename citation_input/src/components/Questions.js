@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Select from "react-select";
 import axios from "axios";
+import dotenv from "dotenv";
 
 export default function Questions() {
   const [qType, setqType] = React.useState("plagiarism");
 
+  const baseUrl = "/api/questions";
   function submitForm(e) {
-    console.log(qType);
     axios
       .post(
-        "/",
+        baseUrl,
         {
-          type: e.target[0].value,
+          type: qType,
           question: e.target[1].value,
           option1: e.target[2].value,
           option2: e.target[3].value,
