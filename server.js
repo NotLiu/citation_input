@@ -25,19 +25,36 @@ const client = new MongoClient(uri, {
 });
 
 app.post("/api/questions", function (request, response) {
-  const entry = {
-    type: request.body.type,
-    questionText: request.body.question,
-    option1: request.body.option1,
-    option2: request.body.option2,
-    opt1ChooseCount: 0,
-    opt2ChooseCount: 0,
-  };
+  // const entry = {
+  //   type: request.body.type,
+  //   questionText: request.body.question,
+  //   option1: request.body.option1,
+  //   option2: request.body.option2,
+  //   opt1ChooseCount: 0,
+  //   opt2ChooseCount: 0,
+  // };
+
   console.log(request.body);
   client.connect((err) => {
-    const collection = client.db("Content").collection("Questions");
+    const collection = client.db("Content").collection(request.body.level);
     // perform actions on the collection object
     console.log("CONNECTED TO DB");
+
+    const entry = {
+      questions: [
+        {
+          number: collection.estimatedDocumentCount(),
+          question: request.body.question,
+          answers: [
+            request.body.option1,
+            request.body.option2,
+            request.body.option3,
+            request.body.option4,
+          ],
+          correct_answers: request.body.correctOptions,
+        },
+      ],
+    };
 
     collection.insertOne(entry);
 

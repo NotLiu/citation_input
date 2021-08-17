@@ -155,7 +155,7 @@
   flex-direction: row;
 }
 
-#dropdown {
+.dropdown {
   width: 13em;
 }
 
